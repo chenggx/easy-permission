@@ -1,0 +1,27 @@
+{
+    "name": "chenggx\/easypermission",
+    "description": "A permission role control package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chenggx",
+            "email": "chengguangxin927@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Chenggx\\EasyPermission\\": "./src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chenggx\\EasyPermission\\EasyPermissionServiceProvider"
+            ]
+        }
+    }
+}
