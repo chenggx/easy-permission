@@ -13,6 +13,10 @@ class Permission extends Model
         'hidden' => 'boolean',
     ];
 
+    const GROUPTYPE = 1;
+    const PAGETYPE = 2;
+    const BUTTONTYPE = 3;
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_permission_relation', 'role_id', 'permission_id');
