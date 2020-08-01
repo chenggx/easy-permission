@@ -1,4 +1,4 @@
-<h1 align="center"> easyPermission </h1>
+<h1 align="center"> easy-permission </h1>
 
 <p align="center"> A permission role control package.</p>
 
@@ -6,12 +6,19 @@
 ## Installing
 
 ```shell
-$ composer require chenggx/easyPermission -vvv
+$ composer require chenggx/easy-permission -vvv
+
+Admin-users 表必须有role_id 字段
+
+AdminUser 模型里添加 UserPermission 的 trait 后自动关联 Role 模型，使用->role 获取角色模型数据
+
+路由中间件为 check-permission 必须放在登录有验证中间件后面
+
 ```
 
 ## Usage
 
-TODO
+
 
 ## Contributing
 
