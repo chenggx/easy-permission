@@ -2,6 +2,7 @@
 
 <p align="center"> A permission role control package.</p>
 
+该扩展包主要功能是提供 API 权限验证的。前端配合该接口可以实现按钮级的权限。
 
 ## Installing
 

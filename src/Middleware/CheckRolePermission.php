@@ -31,7 +31,7 @@ class CheckRolePermission
                 return str_replace('_', '.', Str::snake($permission['name']));
             }
         )->all();
-        
+
         if (!in_array($currentRouteName, array_merge($whiteList, $permissions))) {
             return response('权限不足', 403);
         }

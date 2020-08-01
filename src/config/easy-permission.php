@@ -11,4 +11,7 @@ return [
     'router_permission_list'  => [
 //        'auth.login'   //示例：路由名称
     ],
+
+    // 用户表关联角色表的字段名称
+    'role_field'              => 'role_id',
 ];
