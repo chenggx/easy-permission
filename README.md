@@ -9,7 +9,7 @@
 ## 安装方法
 
 ```shell
-$ composer require chenggx/easy-permission -vvv
+$ composer require chenggx/easypermission -vvv
 
 # 发布配置文件
 $ php artisan vendor:publish --provider="Chenggx\EasyPermission\EasyPermissionServiceProvider"
