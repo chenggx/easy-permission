@@ -22,7 +22,13 @@ class PermissionController extends Controller
     {
         $list = Permission::all();
 
-        return makeTree(PermissionResource::collection($list)->toArray($request));
+        $res = makeTree(PermissionResource::collection($list)->toArray($request));
+
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => $res
+        ]);
     }
 
     /**
@@ -41,7 +47,11 @@ class PermissionController extends Controller
             throw new InternalException('权限新增-数据库操作失败');
         }
 
-        return new PermissionResource($res);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => new PermissionResource($res)
+        ]);
     }
 
     /**
@@ -67,7 +77,11 @@ class PermissionController extends Controller
             throw new InternalException('权限更新-数据库操作失败');
         }
 
-        return new PermissionResource($permission);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => new PermissionResource($permission)
+        ]);
     }
 
     /**
@@ -100,6 +114,10 @@ class PermissionController extends Controller
             throw new InternalException('权限删除-数据库操作失败');
         }
 
-        return response()->json($res);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => $res
+        ]);
     }
 }

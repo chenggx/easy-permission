@@ -25,7 +25,11 @@ class RoleController extends Controller
             unset($item['permissions']);
         });
 
-        return response()->json($list);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => $list
+        ]);
     }
 
     /**
@@ -48,7 +52,11 @@ class RoleController extends Controller
             throw new InternalException('创建角色-数据库操作失败');
         }
 
-        return response()->json($res);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => $res
+        ]);
     }
 
     /**
@@ -81,7 +89,11 @@ class RoleController extends Controller
             throw new InternalException('更新角色-数据库操作失败');
         }
 
-        return response()->json($role);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => $role
+        ]);
     }
 
     /**
@@ -111,6 +123,10 @@ class RoleController extends Controller
             throw new InternalException('删除角色-数据库操作失败');
         }
 
-        return response()->json(true);
+        return response()->json([
+            'code' => 0,
+            'message' => 'success',
+            'data' => true
+        ]);
     }
 }

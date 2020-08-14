@@ -61,4 +61,6 @@ trait UserPermission
     {
         return makeTree($this->menus()->toArray());
     }
+
+    //清楚当前用户的权限缓存
 }
