@@ -13,7 +13,7 @@ return [
     'router' => [
         //不需要验证权限的路由列表
         'white_list' => [
-            //        'auth.login'   //示例：路由名称]
+        //'auth.login'   //示例：路由名称
         ],
         'middleware' => ['api', 'auth', 'check-permission'],
         //路由地址前缀

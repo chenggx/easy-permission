@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Cache;
 
 trait UserPermission
 {
+    protected $permission_cache_key;
+
+    public function __construct()
+    {
+        $this->permission_cache_key = $this->id.config('easy-permission.permission_cache_surfix');
+    }
+
     /**
      * 关联角色模型.
      *
@@ -36,14 +43,16 @@ trait UserPermission
      */
     public function buttons()
     {
-        $key = $this->id.config('easy-permission.permission_cache_surfix');
-
         $btns = Cache::get(
-            $key,
-            function () use ($key) {
+            $this->permission_cache_key,
+            function () {
                 $permissions = $this->role->permissions;
                 $res = $permissions->where('type', config('easy-permission.permission_type.button'));
-                Cache::put($key, $res, now()->addDays(config('easy-permission.button_cache_time')));
+                Cache::put(
+                    $this->permission_cache_key,
+                    $res,
+                    now()->addDays(config('easy-permission.button_cache_time'))
+                );
 
                 return $res;
             }
@@ -63,4 +72,8 @@ trait UserPermission
     }
 
     //清楚当前用户的权限缓存
+    public function clearPermissionCache()
+    {
+        Cache::forget($this->permission_cache_key);
+    }
 }
