@@ -13,7 +13,7 @@ class CheckRolePermission
 {
     public function handle($request, Closure $next)
     {
-        $whiteList = config('easy-permission.router_permission_list');
+        $whiteList = config('easy-permission.router.white_list');
 
         $adminuser = $request->user();
 
@@ -22,7 +22,7 @@ class CheckRolePermission
         }
 
         //从缓存中获取登录用户拥有的所有权限
-        $permissions = collect(Cache::get($adminuser->id.config('easy-permission.permission_cache_surfix')));
+        $permissions = collect(Cache::get($adminuser->id.config('easy-permission.permission_cache_suffix')));
         $currentRouteName = Route::currentRouteName();
 
 //        将用户的权限 name 转换为.的格式
