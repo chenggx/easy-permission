@@ -22,7 +22,6 @@ class EasyPermissionServiceProvider extends ServiceProvider
               ], 'migrations');
             }
 
-        }
     }
 
     public function register()
