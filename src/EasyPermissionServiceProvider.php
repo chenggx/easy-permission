@@ -3,7 +3,6 @@
 namespace Chenggx\EasyPermission;
 
 use Chenggx\EasyPermission\Middleware\CheckRolePermission;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class EasyPermissionServiceProvider extends ServiceProvider

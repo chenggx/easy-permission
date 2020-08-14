@@ -19,19 +19,19 @@ class PermissionRequest extends FormRequest
         $buttonType = config('easy-permission.permission_type.button');
 
         return [
-            'pid'    => "required_if:type,$pageType,$buttonType|integer",
-            'title'  => 'required|string|min:1|max:10',
-            'name'   => 'required|string|min:1|max:30',
-            'type'   => 'required|integer|min:1|max:3',
-            'order'  => "nullable|required_if:type,$groupType,$pageType|integer",
-            'icon'   => "nullable|required_if:type,$groupType|string",
+            'pid' => "required_if:type,$pageType,$buttonType|integer",
+            'title' => 'required|string|min:1|max:10',
+            'name' => 'required|string|min:1|max:30',
+            'type' => 'required|integer|min:1|max:3',
+            'order' => "nullable|required_if:type,$groupType,$pageType|integer",
+            'icon' => "nullable|required_if:type,$groupType|string",
             'method' => [
                 'nullable',
                 "required_if:type,$buttonType",
                 'string',
                 Rule::in('GET', 'POST', 'PUT', 'PATCH', 'DELETE'),
             ],
-            'api'    => "nullable|required_if:type,$buttonType|string",
+            'api' => "nullable|required_if:type,$buttonType|string",
             'hidden' => "required_if:type,$groupType,$pageType|boolean",
         ];
     }
