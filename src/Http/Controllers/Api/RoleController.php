@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Chenggx\EasyPermission\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\DB;
@@ -10,11 +9,11 @@ use Chenggx\EasyPermission\Http\Requests\RoleRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Chenggx\EasyPermission\Exceptions\InternalException;
 
-
 class RoleController extends Controller
 {
     /**
-     * role list
+     * role list.
+     *
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
@@ -30,9 +29,10 @@ class RoleController extends Controller
     }
 
     /**
-     * create role
-     * @param  RoleRequest  $request
+     * create role.
+     *
      * @return mixed
+     *
      * @throws InternalException
      */
     public function store(RoleRequest $request)
@@ -52,10 +52,12 @@ class RoleController extends Controller
     }
 
     /**
-     * update role
+     * update role.
+     *
      * @param $id
-     * @param  RoleRequest  $request
+     *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|mixed|object|null
+     *
      * @throws InternalException
      */
     public function update($id, RoleRequest $request)
@@ -83,9 +85,12 @@ class RoleController extends Controller
     }
 
     /**
-     * destroy role and permission-relation
+     * destroy role and permission-relation.
+     *
      * @param $id
+     *
      * @return \Illuminate\Http\JsonResponse
+     *
      * @throws InternalException
      */
     public function destroy($id)
@@ -98,12 +103,14 @@ class RoleController extends Controller
         // 同时删除角色附带的权限
         $res = DB::transaction(function () use ($role) {
             $role->permissions()->detach();
+
             return $role->delete();
         });
 
         if (!$role) {
             throw new InternalException('删除角色-数据库操作失败');
         }
+
         return response()->json(true);
     }
 }

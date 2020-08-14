@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Chenggx\EasyPermission\Exceptions\InvalidRequestException;
 
-
 class CheckRolePermission
 {
     public function handle($request, Closure $next)

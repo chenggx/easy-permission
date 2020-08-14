@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Chenggx\EasyPermission\Models;
 
 use Illuminate\Database\Eloquent\Model;

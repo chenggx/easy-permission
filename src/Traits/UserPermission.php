@@ -9,7 +9,8 @@ use Chenggx\EasyPermission\Models\Permission;
 trait UserPermission
 {
     /**
-     * 关联角色模型
+     * 关联角色模型.
+     *
      * @return mixed
      */
     public function role()
@@ -18,7 +19,8 @@ trait UserPermission
     }
 
     /**
-     * 获取所有菜单权限
+     * 获取所有菜单权限.
+     *
      * @return mixed
      */
     public function menus()
@@ -29,7 +31,8 @@ trait UserPermission
     }
 
     /**
-     * 从缓存获取所有按钮权限，如果不存在怎从数据库中获取并写入缓存
+     * 从缓存获取所有按钮权限，如果不存在怎从数据库中获取并写入缓存.
+     *
      * @return mixed
      */
     public function buttons()
@@ -51,7 +54,8 @@ trait UserPermission
     }
 
     /**
-     * 返回树状格式的菜单列表
+     * 返回树状格式的菜单列表.
+     *
      * @return array
      */
     public function menusTree()

@@ -2,12 +2,8 @@
 
 if (!function_exists('makeTree')) {
     /**
-     * 生成树形无限极分类
-     * @param  array  $list
-     * @param  string  $pk
-     * @param  string  $pid
-     * @param  string  $child
-     * @param  int  $root
+     * 生成树形无限极分类.
+     *
      * @return array
      */
     function makeTree(array $list, string $pk = 'id', string $pid = 'pid', string $child = 'children', int $root = 0)
@@ -26,6 +22,7 @@ if (!function_exists('makeTree')) {
                 $tree[] = $val;
             }
         }
+
         return $tree;
     }
 }
