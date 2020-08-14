@@ -4,7 +4,6 @@ namespace Chenggx\EasyPermission\Traits;
 
 use Chenggx\EasyPermission\Models\Role;
 use Illuminate\Support\Facades\Cache;
-use Chenggx\EasyPermission\Models\Permission;
 
 trait UserPermission
 {
