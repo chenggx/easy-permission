@@ -27,7 +27,7 @@ trait UserPermission
     {
         $permissions = $this->role->permissions;
 
-        return $permissions->where('type', '<>', Permission::BUTTONTYPE);
+        return $permissions->where('type', '<>', config('easy-permission.permission_type.button'));
     }
 
     /**
@@ -43,7 +43,7 @@ trait UserPermission
             $key,
             function () use ($key) {
                 $permissions = $this->role->permissions;
-                $res = $permissions->where('type', Permission::BUTTONTYPE);
+                $res = $permissions->where('type', config('easy-permission.permission_type.button'));
                 Cache::put($key, $res, now()->addDays(config('easy-permission.button_cache_time')));
 
                 return $res;

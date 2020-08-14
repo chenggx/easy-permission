@@ -2,7 +2,7 @@
 
 Route::namespace('\Chenggx\EasyPermission\Http\Controllers\Api')
     ->prefix(config('easy-permission.router.prefix'))
-    ->middleware(['api', 'auth', 'check-permission'])
+    ->middleware(config('easy-permission.router.middleware'))
     ->group(
         function () {
             Route::apiResource('role', 'RoleController')->except('show');

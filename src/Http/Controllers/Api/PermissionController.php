@@ -34,6 +34,7 @@ class PermissionController extends Controller
      */
     public function store(PermissionRequest $request)
     {
+        return $request->validated();
         $res = Permission::create($request->validated());
 
         if (!$res) {

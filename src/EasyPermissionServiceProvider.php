@@ -17,12 +17,10 @@ class EasyPermissionServiceProvider extends ServiceProvider
                 __DIR__.'/config/easy-permission.php' => config_path('easy-permission.php'),
             ]
         );
-
-        $router = $this->app->make(Router::class);
-        $router->aliasMiddleware('check-permission', CheckRolePermission::class);
     }
 
     public function register()
     {
+        app('router')->aliasMiddleware('check-permission', CheckRolePermission::class);
     }
 }
