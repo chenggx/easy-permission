@@ -27,7 +27,7 @@ class PermissionController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => $res
+            'data' => $res,
         ]);
     }
 
@@ -50,7 +50,7 @@ class PermissionController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => new PermissionResource($res)
+            'data' => new PermissionResource($res),
         ]);
     }
 
@@ -80,7 +80,7 @@ class PermissionController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => new PermissionResource($permission)
+            'data' => new PermissionResource($permission),
         ]);
     }
 
@@ -117,7 +117,7 @@ class PermissionController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => $res
+            'data' => $res,
         ]);
     }
 }
