@@ -28,7 +28,7 @@ class RoleController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => $list
+            'data' => $list,
         ]);
     }
 
@@ -55,7 +55,7 @@ class RoleController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => $res
+            'data' => $res,
         ]);
     }
 
@@ -92,7 +92,7 @@ class RoleController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => $role
+            'data' => $role,
         ]);
     }
 
@@ -126,7 +126,7 @@ class RoleController extends Controller
         return response()->json([
             'code' => 0,
             'message' => 'success',
-            'data' => true
+            'data' => true,
         ]);
     }
 }
