@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Chenggx\EasyPermission\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
@@ -15,8 +14,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class PermissionController extends Controller
 {
     /**
-     * permission list
-     * @param  Request  $request
+     * permission list.
+     *
      * @return JsonResponse
      */
     public function index(Request $request)
@@ -27,9 +26,10 @@ class PermissionController extends Controller
     }
 
     /**
-     * create permission
-     * @param  PermissionRequest  $request
+     * create permission.
+     *
      * @return PermissionResource
+     *
      * @throws InternalException
      */
     public function store(PermissionRequest $request)
@@ -44,10 +44,12 @@ class PermissionController extends Controller
     }
 
     /**
-     * update permission
+     * update permission.
+     *
      * @param $id
-     * @param  PermissionRequest  $request
+     *
      * @return PermissionResource
+     *
      * @throws InternalException
      */
     public function update($id, PermissionRequest $request)
@@ -68,9 +70,12 @@ class PermissionController extends Controller
     }
 
     /**
-     * destroy permission
+     * destroy permission.
+     *
      * @param $id
+     *
      * @return int
+     *
      * @throws InternalException
      * @throws InvalidRequestException
      */

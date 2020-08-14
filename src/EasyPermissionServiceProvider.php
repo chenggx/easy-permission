@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Chenggx\EasyPermission;
 
 use Chenggx\EasyPermission\Middleware\CheckRolePermission;
@@ -25,6 +24,5 @@ class EasyPermissionServiceProvider extends ServiceProvider
 
     public function register()
     {
-
     }
 }
