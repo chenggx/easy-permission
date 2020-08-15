@@ -14,6 +14,7 @@ $ composer require chenggx/easypermission -vvv
 # 发布配置文件
 $ php artisan vendor:publish --provider="Chenggx\EasyPermission\EasyPermissionServiceProvider"
 
+$ php artisan migrate
 ```
 
 ## 使用方法
@@ -35,6 +36,10 @@ UserPermission Trait 中的方法
 3. buttons()                从缓存获取所有按钮权限，如果不存在怎从数据库中获取并写入缓存.
 4. menusTree()              返回树状格式的菜单列表.
 5. clearPermissionCache()    清楚当前用户的权限缓存
+
+所有路由
+
+![路由列表](http://static.xiangdangnian.net.cn/WX20200815-105729.png)
 
 ## License
 
