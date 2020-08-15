@@ -3,7 +3,6 @@
 namespace Chenggx\EasyPermission\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class RoleRequest extends FormRequest
 {
@@ -21,12 +20,12 @@ class RoleRequest extends FormRequest
         $remark = config('easy-permission.table_column_names.roles_table.remark');
 
         return [
-            $name      => 'required|string|min:1|max:15',
-            $remark    => 'required|string|min:1|max:25',
+            $name => 'required|string|min:1|max:15',
+            $remark => 'required|string|min:1|max:25',
             'authority' => [
                 'required',
                 'array',
-                "exists:$permissionTableName,$permissionTableIdColumn"
+                "exists:$permissionTableName,$permissionTableIdColumn",
             ],
         ];
     }
