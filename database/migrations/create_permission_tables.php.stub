@@ -10,6 +10,7 @@ class CreatePermissionTables extends Migration
      * Run the migrations.
      *
      * @return void
+     * @throws Exception
      */
     public function up()
     {
@@ -17,50 +18,64 @@ class CreatePermissionTables extends Migration
         $columnNames = config('easy-permission.table_column_names');
 
         if (empty($tableNames) || empty($columnNames)) {
-            throw new \Exception('Error: config/easy-permission.php not loaded. Run [php artisan config:clear] and try again.');
+            throw new \Exception(
+                'Error: config/easy-permission.php not loaded. Run [php artisan config:clear] and try again.'
+            );
         }
 
-        Schema::create($tableNames['roles'], function (Blueprint $table) {
-            $table->bigIncrements($columnNames['roles_table']['id']);
-            $table->string($columnNames['roles_table']['name'])->default('')->comment('角色名称');
-            $table->string($columnNames['roles_table']['remark'])->default('')->comment('角色描述信息');
-            $table->timestamps();
-        });
+        Schema::create(
+            $tableNames['roles'],
+            function (Blueprint $table) use ($columnNames) {
+                $table->bigIncrements($columnNames['roles_table']['id']);
+                $table->string($columnNames['roles_table']['name'])->default('')->comment('角色名称');
+                $table->string($columnNames['roles_table']['remark'])->default('')->comment('角色描述信息');
+                $table->timestamps();
+            }
+        );
 
-        Schema::create($tableNames['permissions'], function (Blueprint $table) {
-            $table->bigIncrements($columnNames['permission_table']['id']);
-            $table->unsignedInteger($columnNames['permission_table']['pid'])->default(0)->comment('父权限 id');
-            $table->string($columnNames['permission_table']['title'])->default('')->comment('权限名称-中文标示');
-            $table->string($columnNames['permission_table']['name'])->default('')->comment('路由名称-大驼峰');
-            $table->unsignedTinyInteger($columnNames['permission_table']['type'])->default(0)->comment('权限类型');
-            $table->unsignedInteger($columnNames['permission_table']['order'])->default(0)->comment('排序');
-            $table->string($columnNames['permission_table']['icon'])->nullable()->comment('图标');
-            $table->string($columnNames['permission_table']['method'])->nullable()->comment('api 方法');
-            $table->string($columnNames['permission_table']['api'])->nullable()->comment('api 地址');
-            $table->boolean($columnNames['permission_table']['hidden'])->default(false)->comment('是否隐藏');
-            $table->timestamps();
+        Schema::create(
+            $tableNames['permissions'],
+            function (Blueprint $table) use ($columnNames) {
+                $table->bigIncrements($columnNames['permission_table']['id']);
+                $table->unsignedInteger($columnNames['permission_table']['pid'])->default(0)->comment('父权限 id');
+                $table->string($columnNames['permission_table']['title'])->default('')->comment('权限名称-中文标示');
+                $table->string($columnNames['permission_table']['name'])->default('')->comment('路由名称-大驼峰');
+                $table->unsignedTinyInteger($columnNames['permission_table']['type'])->default(0)->comment('权限类型');
+                $table->unsignedInteger($columnNames['permission_table']['order'])->default(0)->comment('排序');
+                $table->string($columnNames['permission_table']['icon'])->nullable()->comment('图标');
+                $table->string($columnNames['permission_table']['method'])->nullable()->comment('api 方法');
+                $table->string($columnNames['permission_table']['api'])->nullable()->comment('api 地址');
+                $table->boolean($columnNames['permission_table']['hidden'])->default(false)->comment('是否隐藏');
+                $table->timestamps();
 
-            $table->unique($columnNames['permission_table']['name']);
-        });
+                $table->unique($columnNames['permission_table']['name']);
+            }
+        );
 
-        Schema::create($tableNames['role_permission_relation'], function (Blueprint $table) {
-            $table->bigIncrements($columnNames['role_permission_relation_table']['id']);
-            $table->unsignedBigInteger($columnNames['role_permission_relation_table']['role_id']);
-            $table->unsignedBigInteger($columnNames['role_permission_relation_table']['permission_id']);
-        });
+        Schema::create(
+            $tableNames['role_permission_relation'],
+            function (Blueprint $table) use ($columnNames) {
+                $table->bigIncrements($columnNames['role_permission_relation_table']['id']);
+                $table->unsignedBigInteger($columnNames['role_permission_relation_table']['role_id']);
+                $table->unsignedBigInteger($columnNames['role_permission_relation_table']['permission_id']);
+            }
+        );
     }
 
     /**
      * Reverse the migrations.
      *
      * @return void
+     * @throws Exception
      */
     public function down()
     {
         $tableNames = config('easy-permission.table_names');
 
         if (empty($tableNames)) {
-            throw new \Exception('Error: config/easy-permission.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');
+            throw new \Exception(
+                'Error: config/easy-permission.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.'
+            );
         }
 
         Schema::drop($tableNames['roles']);
