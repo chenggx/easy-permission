@@ -16,7 +16,7 @@ class EasyPermissionServiceProvider extends ServiceProvider
 
         if (!class_exists('CreatePostsTable')) {
             $this->publishes([
-                __DIR__.'/../database/migrations/create_permission_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_permissions_table.php'),
+                __DIR__.'/../database/migrations/create_permission_tables.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_permissions_tables.php'),
                 // 你可以在这里添加更多的迁移
               ], 'migrations');
         }
